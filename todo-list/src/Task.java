@@ -22,6 +22,6 @@ public class Task {
 
     @Override
     public String toString() {
-        return description + (completed ? "[completed]": "");
+        return description + (completed ? " [completed]": "");
     }
 }
