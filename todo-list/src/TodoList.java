@@ -100,24 +100,22 @@ public class TodoList {
         viewTasks();
         System.out.println("Enter the task number to mark as complete: ");
         try {
-        int completeNumber = scanner.nextInt();
-        scanner.nextLine();
-        if (completeNumber > 0 && completeNumber <= tasks.size()) {
-            Task task = tasks.get(completeNumber - 1);
-            if (!task.isCompleted()) {
-                task.markCompleted();
-                System.out.println("Task marked as complete: " + task);
+            int completeNumber = scanner.nextInt();
+            scanner.nextLine();
+            if (completeNumber > 0 && completeNumber <= tasks.size()) {
+                Task task = tasks.get(completeNumber - 1);
+                if (!task.isCompleted()) {
+                    task.markCompleted();
+                    System.out.println("Task marked as complete: " + task);
+                } else {
+                    System.out.println("Task is already completed.");
+                }
             } else {
-                System.out.println("Task is already completed.");
+                System.out.println("Invalid task number.");
             }
-        } else {
-            System.out.println("Invalid task number.");
-        }
-    } catch (Exception e) {
+        } catch (Exception e) {
             System.out.println("Invalid input. Please enter a number.");
             scanner.nextLine();
         }
-}
-
-
+    }
 }
