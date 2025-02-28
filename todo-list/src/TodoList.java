@@ -70,8 +70,9 @@ public class TodoList {
         } else {
             System.out.println("\nYour Tasks:");
             for (int i = 0; i < tasks.size(); i++) {
-                System.out.println((i + 1) + ". " + tasks.get(i));
+                System.out.printf("%d. %-30s %s%n", (i + 1), tasks.get(i).getDescription(), tasks.get(i).isCompleted() ? "[Completed]" : "[Pendidng]");
             }
+            System.out.println("----------------------------");
         }
     }
 
