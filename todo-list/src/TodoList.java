@@ -29,6 +29,9 @@ public class TodoList {
                         markTaskComplete();
                         break;
                     case 5:
+                        editTask();
+                        break;
+                    case 6:
                         running = false;
                         System.out.println("Goodbye!!");
                         break;
@@ -37,6 +40,7 @@ public class TodoList {
                 }
             } catch (Exception e) {
                 System.out.println("Invalid input. Please enter a number.");
+                scanner.nextLine();
             }
         }
         scanner.close();
@@ -48,8 +52,9 @@ public class TodoList {
         System.out.println("2. View Tasks");
         System.out.println("3. Remove Task");
         System.out.println("4. Mark Task as Complete");
-        System.out.println("5. Exit");
-        System.out.println("Enter your choice (1-5): ");
+        System.out.println("5. Edit Task");
+        System.out.println("4. Exit");
+        System.out.println("Enter your choice (1-6): ");
     }
 
     private static void addTask() {
@@ -110,6 +115,31 @@ public class TodoList {
                 } else {
                     System.out.println("Task is already completed.");
                 }
+            } else {
+                System.out.println("Invalid task number.");
+            }
+        } catch (Exception e) {
+            System.out.println("Invalid input. Please enter a number.");
+            scanner.nextLine();
+        }
+    }
+
+    private static void editTask() {
+        if (tasks.isEmpty()) {
+            System.out.println("No tasks to edit.");
+            return;
+        }
+        viewTasks();
+        System.out.println("Enter the task number to edit: ");
+        try {
+            int editNumber = scanner.nextInt();
+            scanner.nextLine();
+            if (editNumber > 0 && editNumber <= tasks.size()) {
+                Task task = tasks.get(editNumber - 1);
+                System.out.println("Enter new description for '" + task.getDescription() + "': ");
+                String newDesc = scanner.nextLine();
+                task.setDescription(newDesc);
+                System.out.println("Task updated: " + task);
             } else {
                 System.out.println("Invalid task number.");
             }
